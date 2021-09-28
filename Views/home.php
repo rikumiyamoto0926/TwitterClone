@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
- 
+
 <head>
     <?php include_once('../Views/common/head.php'); ?>
     <title>ホーム画面 / Twitterクローン</title>
     <meta name="description" content="ホーム画面です">
 </head>
- 
+
 <body class="home">
     <div class="container">
         <?php include_once('../Views/common/side.php'); ?>
@@ -14,11 +14,11 @@
             <div class="main-header">
                 <h1>ホーム</h1>
             </div>
- 
+
             <!-- つぶやき投稿エリア -->
             <div class="tweet-post">
                 <div class="my-icon">
-                    <img src="<?php echo HOME_URL; ?>Views/img_uploaded/user/sample-person.jpg" alt="">
+                    <img src="<?php echo htmlspecialchars($view_user['image_path'])?>" alt="">
                 </div>
                 <div class="input-area">
                     <form action="post.php" method="post" enctype="multipart/form-data">
@@ -32,10 +32,10 @@
                     </form>
                 </div>
             </div>
- 
+
             <!-- 仕切りエリア -->
             <div class="ditch"></div>
- 
+
             <!-- つぶやき一覧エリア -->
             <?php if (empty($view_tweets)) : ?>
                 <p class="p-3">ツイートがありません</p>
@@ -50,5 +50,5 @@
     </div>
     <?php include_once('../Views/common/foot.php'); ?>
 </body>
- 
+
 </html>
