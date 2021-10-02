@@ -8,6 +8,7 @@ include_once '../config.php';
 // 便利な関数を読み込み
 include_once '../util.php';
 // いいね！データ操作モデルを読み込む
+include_once '../Models/likes.php';
 
 // -------------------------------
 // ログインチェック
@@ -44,6 +45,7 @@ if (isset($_POST['like_id'])) {
     ];
     // いいね！削除
     deleteLike($data);
+    $like_id = false;
 }
 
 // ------------------------------------

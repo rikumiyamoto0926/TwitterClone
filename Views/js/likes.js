@@ -10,6 +10,7 @@ $(function () {
         const like_id = $(this).data('like-id');
         const like_count_obj = $(this).parent().find('.js-like-count');
         let like_count = Number(like_count_obj.html());
+        console.log('js-like activated!');
 
         if (like_id) {
             // いいね！取り消し
@@ -32,10 +33,10 @@ $(function () {
                     // いいね！ボタンの色をグレーに変更
                     $(this).find('img').attr('src', '../Views/img/icon-heart.svg');
                 })
-                .fail((data) => {
+                .fail((jqXHR) => {
                     alert('処理中にエラーが発生しました。');
-                    console.log(data);
-                });
+                    console.log(jqXHR);
+                })
         } else {
             // いいね！付与
             // 非同期通信

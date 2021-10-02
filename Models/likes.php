@@ -14,7 +14,8 @@ function createLike(array $data)
     // DB接続
     $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     if ($mysqli->connect_errno) {
-
+        echo 'MySQLの接続に失敗しました。：' . $mysqli->connect_error . "\n";
+        exit;
     }
 
     // ----------------------------
@@ -61,14 +62,15 @@ function deleteLike(array $data)
     // DB接続
     $mysqli = new mysqli(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
     if ($mysqli->connect_errno) {
-
+        echo 'MySQLの接続に失敗しました。：' . $mysqli->connect_error . "\n";
+        exit;
     }
 
     // --------------------------------
     // SQLクエリを作成
     // --------------------------------
     // 論理削除のクエリを作成
-    $query = 'UPDATE likes SET status ="deleted" WHERE id = ? AND use_id = ?';
+    $query = 'UPDATE likes SET status ="deleted" WHERE id = ? AND user_id = ?';
     $statement = $mysqli->prepare($query);
 
     // プレースホルダに値をセット
