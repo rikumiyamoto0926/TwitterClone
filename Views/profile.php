@@ -14,7 +14,6 @@
             <div class="main-header">
                 <h1><?php echo $view_requested_user['nickname']; ?></h1>
             </div>
-
             <!-- プロフィールエリア -->
             <div class="profile-area">
                 <div class="top">

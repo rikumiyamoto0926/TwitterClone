@@ -8,6 +8,7 @@ include_once '../config.php' ;
 // 便利な関数を読み込む
 include_once '../util.php' ;
 // フォローデータ操作モデルを読み込む
+include_once '../Models/follows.php';
 
 // ----------------------------
 // ログインチェック
@@ -38,7 +39,7 @@ if (isset($_POST['followed_user_id'])) {
 // -----------------------------------
 // フォロー削除
 // ----------------------------------
-// followed_id がPOSTされた場合
+// follow_id がPOSTされた場合
 if (isset($_POST['follow_id'])) {
     $data = [
         'follow_id' => $_POST['follow_id'],

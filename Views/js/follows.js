@@ -1,13 +1,15 @@
-//////////////////////////////////
+///////////////////////////////////////
 // フォロー用のJavaScript
-////////////////////////////////
+///////////////////////////////////////
 
 $(function () {
     $('.js-follow').click(function () {
         const this_obj = $(this);
         const followed_user_id = $(this).data('followed-user-id');
         const follow_id = $(this).data('follow-id');
-
+        cache: false
+        console.log(follow_id);
+        console.log(followed_user_id);
         if (follow_id) {
             // フォロー取り消し
             $.ajax({
@@ -18,20 +20,20 @@ $(function () {
                 },
                 timeout: 10000
             })
-            // 取り消し成功
-            .done(() => {
-                // フォローボタンを白にする
-                this_obj.addClass('btn-reverse');
-                // フォローボタンの文言変更
-                this_obj.text('フォローする');
-                // フォローIDを削除
-                this_obj.data('follow-id', null);
-            })
-            // 取り消し失敗
-            .fail((data) => {
-                alert('処理中にエラーが発生しました。');
-                console.log(data);
-            });
+                // 取り消し成功
+                .done(() => {
+                    // フォローボタンを白にする
+                    this_obj.addClass('btn-reverse');
+                    // フォローボタンの文言変更
+                    this_obj.text('フォローする');
+                    // フォローIDを削除
+                    this_obj.data('follow-id', null);
+                })
+                // 取り消し失敗
+                .fail((data) => {
+                    alert('処理中にエラーが発生しました。');
+                    console.log(data);
+                });
         } else {
             // フォローする
             $.ajax({
@@ -49,8 +51,10 @@ $(function () {
                     // フォローボタンの文言変更
                     this_obj.text('フォローを外す');
                     // フォローIDを付与
-                    this_obj.data('follow-id', data['follow_id']); 
+                    this_obj.data('follow-id', data['follow_id']);
+                    console.log(data);
                 })
+                
                 // フォロー失敗
                 .fail((data) => {
                     alert('処理中にエラーが発生しました。');

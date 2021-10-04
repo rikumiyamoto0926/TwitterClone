@@ -76,7 +76,7 @@ function deleteFollow(array $data)
     $statement = $mysqli->prepare($query);
 
     // プレースフォルダに値をセット
-    $statement->bind_param('sii', $data['updated_at'], $data['follow_id'], $data['follow_id'], $data['follow_user_id']);
+    $statement->bind_param('sii', $data['updated_at'], $data['follow_id'], $data['follow_user_id']);
 
     // --------------------------------------
     // 戻り値を作成
